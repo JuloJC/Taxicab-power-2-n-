@@ -1,0 +1,49 @@
+<?php
+    $p=4; //power used
+    $b=gmp_init("130"); //line of the begining    
+    $fmax="$p.txt";
+    $c=gmp_init("5");
+    $a=gmp_init("5");
+    $cpt=0;
+    $c=$b;
+    $d=1;
+    $a=$b+1;
+    $z=gmp_pow($a, $p);
+    $t0=gmp_pow($b,$p)+gmp_pow($c,$p);
+    $t1=$z+gmp_pow($d,$p);
+    $d =gmp_root($t0 -$z , $p);
+    echo "\n";
+    echo  "start : $b";
+    echo "\n";
+    while(1){
+        while ($t0 >= $t1){
+            $a=gmp_root($t0-1,$p);
+            $z=gmp_pow($a, $p);
+            $d=gmp_root($t0 - $z, $p);
+            $t2 = gmp_pow($a, $p) + gmp_pow($d, $p);
+            if ($t0 == $t2){
+                echo "\na^$p + b^$p = c^$p + d^$p works with : ";
+                echo ("\na = $a");
+                echo ("\nb = $d");
+                echo ("\nc = $b");
+                echo ("\nd = $c");
+	        echo ("\nvalue = $t0");
+                $f=fopen($fmax,"a");
+		fwrite($f, "$a^$p + $d^$p = $b^$p + $c^$p = $t0\n");
+		fclose($f);
+	        echo "\n";
+	     }
+            $cpt=$cpt+1;
+            $c = $c - 1;
+            $t0 = gmp_pow($b, $p) + gmp_pow($c, $p);
+	  }
+        echo "$b".chr(13);
+        $b = $b + 1;
+        $c = $b;
+        $a = $b + 1;
+        $d = 1;
+        $cpt = 0;
+        $t0 = pow($b, $p) + pow($c, $p);
+        $t1 = pow($a, $p) + pow($d, $p);
+        //$ta=microtime(true);
+}
