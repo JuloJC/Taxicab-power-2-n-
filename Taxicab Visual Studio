@@ -1,7 +1,7 @@
 // Taxicab.cpp :
 //find solutions for taxicab() with Visual Studio 2017
 //for example : taxicab(4,2,2) => 158^4 + 59^4 = 133^4 + 134^4
-//it calculates taxicab(p,2,n) and you have to enter the power p and begining of the line n
+//it calculates taxicab(p,2,n) and you have to enter the power p and the beginning of the line n
 
 #pragma warning (disable : 4146)
 
