@@ -1,0 +1,103 @@
+// Taxicab.cpp :
+//find solutions for taxicab() with Visual Studio 2017
+//for example : taxicab(4,2,2) => 158^4 + 59^4 = 133^4 + 134^4
+//it calculates taxicab(p,2,n) and you have to enter the power p and begining of the line n
+
+#pragma warning (disable : 4146)
+
+#include <iostream>
+#include<conio.h>
+#include<stdio.h>
+#include<stdlib.h>
+
+#include "C:\Users\court\source\repos\Julo1\include\gmp.h"
+
+void main()
+{
+	char fSave[512];
+	int comp,n,p,start,A;
+	mpz_t a, b, c, d, r, aa, bb, cc, dd, t0, t1, t2, z;
+	printf("power : ");
+	scanf_s("%d",&p);//power
+	printf("begining : ");
+	scanf_s("%d", &start);//begining
+	n = start;
+	sprintf_s(fSave, "Taxicab_%d.txt", p);
+	mpz_init(b);
+	mpz_set_si(b, start);//line of the begining : b=1000
+	mpz_init(a);
+	mpz_init(c);
+	mpz_init(d);
+	mpz_init(aa);
+	mpz_init(bb);
+	mpz_init(cc);
+	mpz_init(dd);
+	mpz_init(r);
+	mpz_init(t0);
+	mpz_init(t1);
+	mpz_init(t2);
+	mpz_init(z);
+	mpz_set(c, b);//c=b
+	mpz_set_ui(d, 1);//d=1
+	mpz_add_ui(a, b, 1); //a=b+1
+	//gmp_printf("a=%Zd\n", a);
+	mpz_pow_ui(z, a, p);//z = a^p
+	mpz_pow_ui(bb, b, p);//bb = b^p
+	mpz_pow_ui(cc, c, p);//cc = c^p
+	mpz_add(t0, cc, bb);   //t0 = bb+cc
+	mpz_pow_ui(dd, d, p);//dd = d^p
+	mpz_add(t1, z, dd);   //t1 = z+dd
+	mpz_sub(dd, t0, z); // d= t0-z
+	mpz_root(d, dd, p);//d = racine pieme (t0-z)
+	printf("\nstart\n");
+	while (1)
+	{
+		comp = mpz_cmp(t0, t1); //Compare op1 and op2. Return a positive value if op1 > op2, zero if op1 = op2, or a negative value if op1 < op2.
+		while (comp >= 0)
+		{
+			mpz_sub_ui(r, t0, 1);//r=t0-1
+			mpz_root(a, r, p);//a = racine pieme(r)
+			mpz_pow_ui(z, a, p);//z = a^p
+			mpz_sub(dd, t0, z); // dd= t0-z
+			mpz_root(d, dd, p);//d = racine pieme (t0-z)
+			mpz_pow_ui(aa, a, p);//aa = a^p
+			mpz_pow_ui(dd, d, p);//dd = d^p
+			mpz_add(t2, aa, dd);   //t2 = aa+dd
+			comp = mpz_cmp(t0, t2);
+			if (comp == 0)
+			{
+				//char buf[512];
+				//A = gmp_int(a);
+				gmp_printf("egalite avec \na = %Zd\n", a);
+				gmp_printf("b = %Zd\n", d);
+				gmp_printf("c = %Zd\n", c);
+				gmp_printf("d = %Zd\n\n", b);
+				FILE* f;
+				int ok = fopen_s(&f, fSave, "a");
+				//printf("%Zd",a);
+				fprintf(f, "%d\n", n);
+				fclose(f);
+			}
+			mpz_sub_ui(c, c, 1); // c=c-1
+			mpz_pow_ui(bb, b, p);//bb = b^p
+			mpz_pow_ui(cc, c, p);//cc = c^p
+			mpz_add(t0, cc, bb);   //t0 = bb+cc
+			comp = mpz_cmp(t0, t1);
+		}
+		//gmp_printf("on en est a %Zd\n", b);
+		//gmp_printf("%d.. %Zd%c", b);
+		mpz_add_ui(b, b, 1); //b=b+1
+		n++;
+		printf("%d..%d%c", start, n, 13);
+		mpz_set(c, b);//c=b
+		mpz_add_ui(a, b, 1); //a=b+1
+		mpz_set_ui(d, 1);//d=1
+		mpz_pow_ui(bb, b, p);//bb = b^p
+		mpz_pow_ui(cc, c, p);//cc = c^p
+		mpz_add(t0, cc, bb);   //t0 = bb+cc
+		mpz_pow_ui(aa, a, p);//aa = a^p
+		mpz_pow_ui(dd, d, p);//dd = d^p
+		mpz_add(t1, aa, dd);   //t1 = aa+dd
+
+	}
+}
