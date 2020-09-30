@@ -25,18 +25,7 @@ void main()
 	sprintf_s(fSave, "Taxicab_%d.txt", p);
 	mpz_init(b);
 	mpz_set_si(b, start);//line of the begining : b=1000
-	mpz_init(a);
-	mpz_init(c);
-	mpz_init(d);
-	mpz_init(aa);
-	mpz_init(bb);
-	mpz_init(cc);
-	mpz_init(dd);
-	mpz_init(r);
-	mpz_init(t0);
-	mpz_init(t1);
-	mpz_init(t2);
-	mpz_init(z);
+	mpz_inits(a,c,d,aa,bb,cc,dd,r,t0,t1,t2,z);
 	mpz_set(c, b);//c=b
 	mpz_set_ui(d, 1);//d=1
 	mpz_add_ui(a, b, 1); //a=b+1
@@ -79,7 +68,7 @@ void main()
 				B = mpz_get_ui(b);
 				C = mpz_get_ui(c);
 				D = mpz_get_ui(d);
-				fprintf(f, "%d^%d + %d^%d = %d^%d + %d^%d\n", A,p,D,p,B,p,D,p);
+				fprintf(f, "%d^%d + %d^%d = %d^%d + %d^%d\n", A,p,D,p,B,p,C,p);
 				fclose(f);
 			}
 			mpz_sub_ui(c, c, 1); // c=c-1
