@@ -1,7 +1,7 @@
 // Taxicab.cpp :
-//find solutions for taxicab() with Visual Studio 2017
+//find solutions for taxicab() with Visual Studio 2017, using gmp.h
 //for example : taxicab(4,2,2) => 158^4 + 59^4 = 133^4 + 134^4
-//it calculates taxicab(p,2,n) and you have to enter the power p and the beginning of the line n
+//it calculates taxicab(p,2,n), you have to enter the power p and the beginning of the line n
 
 #pragma warning (disable : 4146)
 
@@ -54,7 +54,7 @@ void main()
 			comp = mpz_cmp(t0, t2);
 			if (comp == 0)
 			{
-				gmp_printf("egalite avec \na = %Zd\n", a);
+				gmp_printf("solution with : \na = %Zd\n", a);
 				gmp_printf("b = %Zd\n", d);
 				gmp_printf("c = %Zd\n", c);
 				gmp_printf("d = %Zd\n\n", b);
