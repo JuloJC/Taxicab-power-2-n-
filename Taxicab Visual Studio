@@ -20,16 +20,15 @@ void main()
 	printf("power : ");
 	scanf_s("%d",&p);//power
 	printf("beginning : ");
-	scanf_s("%d", &start);//begining
+	scanf_s("%d", &start);//line of the beginning
 	n = start;
 	sprintf_s(fSave, "Taxicab_%d.txt", p);
 	mpz_init(b);
-	mpz_set_si(b, start);//line of the begining : b=1000
+	mpz_set_si(b, start);
 	mpz_inits(a,c,d,aa,bb,cc,dd,r,t0,t1,t2,z);
 	mpz_set(c, b);//c=b
 	mpz_set_ui(d, 1);//d=1
 	mpz_add_ui(a, b, 1); //a=b+1
-	//gmp_printf("a=%Zd\n", a);
 	mpz_pow_ui(z, a, p);//z = a^p
 	mpz_pow_ui(bb, b, p);//bb = b^p
 	mpz_pow_ui(cc, c, p);//cc = c^p
@@ -55,15 +54,12 @@ void main()
 			comp = mpz_cmp(t0, t2);
 			if (comp == 0)
 			{
-				//char buf[512];
-				//A = gmp_int(a);
 				gmp_printf("egalite avec \na = %Zd\n", a);
 				gmp_printf("b = %Zd\n", d);
 				gmp_printf("c = %Zd\n", c);
 				gmp_printf("d = %Zd\n\n", b);
 				FILE* f;
 				int ok = fopen_s(&f, fSave, "a");
-				//printf("%Zd",a);
 				A = mpz_get_ui(a);
 				B = mpz_get_ui(b);
 				C = mpz_get_ui(c);
@@ -77,8 +73,6 @@ void main()
 			mpz_add(t0, cc, bb);   //t0 = bb+cc
 			comp = mpz_cmp(t0, t1);
 		}
-		//gmp_printf("on en est a %Zd\n", b);
-		//gmp_printf("%d.. %Zd%c", b);
 		mpz_add_ui(b, b, 1); //b=b+1
 		n++;
 		printf("%d..%d%c", start, n, 13);
