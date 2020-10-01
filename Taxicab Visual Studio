@@ -1,7 +1,7 @@
 // Taxicab.cpp :
 //find solutions for taxicab() with Visual Studio 2017, using gmp.h
 //for example : taxicab(4,2,2) => 158^4 + 59^4 = 133^4 + 134^4
-//it calculates taxicab(p,2,n), you have to enter the power p and the beginning of the line n
+//it calculates taxicab(p,2,n), you have to enter the power p and the beginning
 
 #pragma warning (disable : 4146)
 
@@ -10,7 +10,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#include "C:\Users\court\source\repos\Julo1\include\gmp.h"
+#include "C:\Users\court\source\repos\Julo1\include\gmp.h"//way to find gmp.h on my computer
 
 void main()
 {
@@ -36,7 +36,7 @@ void main()
 	mpz_pow_ui(dd, d, p);//dd = d^p
 	mpz_add(t1, z, dd);   //t1 = z+dd
 	mpz_sub(dd, t0, z); // d= t0-z
-	mpz_root(d, dd, p);//d = racine pieme (t0-z)
+	mpz_root(d, dd, p);//d = p-square(t0-z)
 	printf("\nstart\n");
 	while (1)
 	{
@@ -44,10 +44,10 @@ void main()
 		while (comp >= 0)
 		{
 			mpz_sub_ui(r, t0, 1);//r=t0-1
-			mpz_root(a, r, p);//a = racine pieme(r)
+			mpz_root(a, r, p);//a = p-square(r)
 			mpz_pow_ui(z, a, p);//z = a^p
 			mpz_sub(dd, t0, z); // dd= t0-z
-			mpz_root(d, dd, p);//d = racine pieme (t0-z)
+			mpz_root(d, dd, p);//d = p-square(t0-z)
 			mpz_pow_ui(aa, a, p);//aa = a^p
 			mpz_pow_ui(dd, d, p);//dd = d^p
 			mpz_add(t2, aa, dd);   //t2 = aa+dd
