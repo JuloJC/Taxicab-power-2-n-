@@ -2,7 +2,8 @@
 
 **Julien Courties, 2026.** Computational result on OEIS sequence [A046881](https://oeis.org/A046881) (*smallest number that is the sum of two positive distinct n-th powers in two different ways*): the term a(5), if it exists, satisfies
 
-> **a(5) > 10³⁴**, that is, no integer N ≤ 10³⁴ can be written as a⁵ + b⁵ = c⁵ + d⁵ with 0 < a < b, 0 < c < d and {a, b} ≠ {c, d}.
+> **a(5) > 10³⁴**, that is, no integer N ≤ 10³⁴ can be written as a⁵ + b⁵ = c⁵ + d⁵ with 0 < b < a ; 0 < c < d
+> and {a, b} ≠ {c, d}.
 
 Previous bounds: Randy Ekl, 1998 (> 4.01·10³⁰, *Math. Comp.* 67, Table 9); Stuart Gascoigne, 2002 (> 3.26·10³², exhaustive search, reported on Christian Boyer's page *Squares of Cubes*); Julien Courties, Nov. 2020 (> 10³³, comment in A046881). The present search extends the bound by a factor of 10.
 
