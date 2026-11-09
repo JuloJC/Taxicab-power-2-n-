@@ -1,0 +1,9 @@
+Proposed update of the comment in A046881 (to submit through the OEIS editing interface, logged in as Julien Courties):
+
+Current comment:  a(5) > 10^33. - Julien Courties, Nov 02 2020
+Proposed:         a(5) > 10^34. - Julien Courties, Nov 10 2026
+
+Proposed LINK (OEIS accepts links to programs and computations):
+Julien Courties, <a href="https://github.com/JuloJC/taxicab-fifth-powers">a^5 + b^5 = c^5 + d^5: no solution below 10^34</a> (program and reproducibility information), 2026.
+
+Notes: keep the 2020 comment in the history (editors prefer an updated comment with the new date); mention in the edit summary the previous bounds (Ekl 1998, Gascoigne 2002) already cited in the entry.
